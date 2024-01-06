@@ -1,17 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/prisma/client";
 
 interface Body {
   title: string;
   author: string;
 }
 
-export function GET(request: NextRequest) {
-  return NextResponse.json([
-    {
-      title: "ulul",
-      author: "mamamo",
-    },
-  ]);
+export async function GET(request: NextRequest) {
+  const books = await prisma.book.findMany();
+  return NextResponse.json(books);
 }
 
 export async function POST(request: NextRequest) {

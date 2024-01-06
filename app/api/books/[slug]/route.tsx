@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/prisma/client";
 
 interface Params {
-  params: { slug: string[] };
+  params: { slug: string };
 }
 
-export function GET(request: NextRequest, { params }: Params) {
+export async function GET(request: NextRequest, { params }: Params) {
+  const book = await prisma.book.findUnique({ where: { slug: params.slug } });
   return NextResponse.json([
     {
       title: params.slug,
