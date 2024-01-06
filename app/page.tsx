@@ -1,10 +1,13 @@
-import { Button } from "@/components/ui/button";
+import Hero from "./components/home/Hero";
+import HeroImage from "./components/home/HeroImage";
+import Steps from "./components/home/Steps";
 
 export default function Home() {
   return (
     <>
-      <Button>Log in</Button>
-      <Button variant="outline">Sign</Button>
+      <Hero />
+      <HeroImage />
+      <Steps />
     </>
   );
 }
