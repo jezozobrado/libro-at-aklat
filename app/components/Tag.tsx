@@ -4,12 +4,15 @@ import { Badge as BookBadge } from "@/components/ui/badge";
 
 interface Props {
   badge?: Badge;
+  className?: string;
 }
 
-const Tag = ({ badge }: Props) => {
+const Tag = ({ badge, className }: Props) => {
   if (!badge) return;
   return (
-    <BookBadge className={`w-fit ${BADGE_COLOR[badge]} rounded-md`}>
+    <BookBadge
+      className={`w-fit ${BADGE_COLOR[badge]} rounded-md ${className}`}
+    >
       {BADGE_LABEL[badge]}
     </BookBadge>
   );

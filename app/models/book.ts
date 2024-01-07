@@ -11,4 +11,5 @@ export interface Book {
   synopsis?: string;
   badge?: Badge;
   image: string;
+  contentWarning?: string;
 }

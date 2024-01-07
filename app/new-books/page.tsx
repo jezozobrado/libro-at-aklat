@@ -5,11 +5,15 @@ import React from "react";
 import axios from "axios";
 import BookCard from "../components/BookCard";
 import { Book } from "../models/book";
+import Link from "next/link";
 
 const NewBooks = () => {
   const { data: books } = useQuery<Book[]>({
     queryKey: ["new-books"],
-    queryFn: () => axios.get("/api/books").then((res) => res.data),
+    queryFn: () =>
+      axios
+        .get("/api/books", { params: { month: "0124" } })
+        .then((res) => res.data),
   });
 
   return (
@@ -23,8 +27,10 @@ const NewBooks = () => {
         </p>
       </div>
 
-      {books?.map((book) => (
-        <BookCard book={book} />
+      {books?.map((book, i) => (
+        <Link href={`/all-books/${book.slug}`}>
+          <BookCard book={book} key={i} />
+        </Link>
       ))}
     </div>
   );

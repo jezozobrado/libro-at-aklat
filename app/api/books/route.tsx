@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
+import { Book } from "@/app/models/book";
 
 interface Body {
   title: string;
@@ -7,7 +8,14 @@ interface Body {
 }
 
 export async function GET(request: NextRequest) {
-  const books = await prisma.book.findMany();
+  const searchParams = request.nextUrl.searchParams;
+
+  const books = await prisma.book.findMany({
+    where: {
+      month: searchParams.get("month") || undefined,
+      slug: searchParams.get("slug") || undefined,
+    },
+  });
   return NextResponse.json(books);
 }
 
