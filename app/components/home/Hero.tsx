@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="flex justify-center mt-20 w-[750px] m-auto flex-col gap-4">
       <div
-        className={`${youngSerif.className} text-[100px] font- text-center leading-tight tracking-wide`}
+        className={`font-young text-[100px] font- text-center leading-tight tracking-wide`}
       >
         Books are our jam.
       </div>

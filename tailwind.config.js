@@ -17,6 +17,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        // 👇 Add CSS variables
+        inter: ["var(--font-inter)"],
+        young: ["var(--font-young)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

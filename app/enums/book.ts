@@ -1,4 +1,4 @@
-enum Genre {
+export enum Genre {
   THRILLER,
   CONTEMPORARY_FICTION,
   LITERARY_FICTION,
@@ -12,7 +12,7 @@ enum Genre {
   MEMOIR,
 }
 
-enum Badge {
+export enum Badge {
   DEBUT,
   EARLY_RELEASE,
   "REPEAT_AUTHOR",
