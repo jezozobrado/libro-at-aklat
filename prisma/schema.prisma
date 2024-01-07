@@ -11,14 +11,15 @@ datasource db {
 }
 
 model Book {
-  id       Int     @id @default(autoincrement())
-  title    String
-  author   String
-  genre    Int 
-  overview String
-  month    String
-  slug     String  @unique
-  image    String?
-  synopsis String? @db.LongText
-  badge    Int?
+  id             Int     @id @default(autoincrement())
+  title          String
+  author         String
+  genre          Int
+  overview       String
+  month          String
+  slug           String  @unique
+  image          String?
+  synopsis       String? @db.LongText
+  badge          Int?
+  contentWarning String?
 }

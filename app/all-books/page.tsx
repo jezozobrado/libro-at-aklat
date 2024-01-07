@@ -1,14 +1,38 @@
-"use server";
-import Image from "next/image";
-import React from "react";
+import NewBooksCarousel from "../components/allBooks/NewBooksCarousel";
+import CarouselByGenre from "../components/allBooks/CarouselByGenre";
+import ThrillerCarousel from "../components/allBooks/CarouselByGenre";
+import { Badge, Genre } from "../enums/book";
+import CarouselByMonth from "../components/allBooks/CarouselByMonth";
+import CarouselByTag from "../components/allBooks/CarouselByTag";
 
 const AllBooks = () => {
-  const src =
-    "https://static.bookofthemonth.com/covers/list/ImpostorSyndrome_Wang-Kathy_200x300.webp";
   return (
     <div>
-      AllBooks
-      <Image src={src} alt="book" width={200} height={300} />
+      <div className="flex  gap-8 flex-col">
+        <p className="text-8xl font-young flex justify-center max-w-[800px] m-auto text-center mt-20">
+          Our top books in one spot
+        </p>
+        <p className="flex justify-center">
+          Choose from our past and present favorites.
+        </p>
+      </div>
+      <NewBooksCarousel />
+      <CarouselByGenre
+        genre={Genre.THRILLER}
+        queryKey="thriller"
+        title="Thrills and Chills"
+      />
+      <CarouselByGenre
+        genre={Genre.ROMANCE}
+        queryKey="contemporary"
+        title="Slice of life"
+      />
+      <CarouselByMonth month="1223" queryKey="dec23" title="December 2023" />
+      <CarouselByTag
+        badge={Badge.EARLY_RELEASE}
+        title="Early Releases"
+        queryKey="early"
+      />
     </div>
   );
 };

@@ -14,6 +14,12 @@ export async function GET(request: NextRequest) {
     where: {
       month: searchParams.get("month") || undefined,
       slug: searchParams.get("slug") || undefined,
+      badge: searchParams.get("badge")
+        ? parseInt(searchParams.get("badge")!)
+        : undefined,
+      genre: searchParams.get("genre")
+        ? parseInt(searchParams.get("genre")!)
+        : undefined,
     },
   });
   return NextResponse.json(books);
