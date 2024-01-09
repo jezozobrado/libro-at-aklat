@@ -15,16 +15,8 @@ interface CartStore {
   //   setIsDisabled: (bool: boolean) => Promise<void>;
 }
 
-const useCartStore = create<CartStore>()(
-  persist(
-    (set) => ({
-      cart: [],
-      setCart: (books) => set((store) => ({ cart: [...store.cart, ...books] })),
-    }),
-    {
-      name: "cart",
-    }
-  )
-);
-
+const useCartStore = create<CartStore>()((set) => ({
+  cart: [],
+  setCart: (books) => set((store) => ({ cart: [...books] })),
+}));
 export default useCartStore;

@@ -29,7 +29,7 @@ const NewBooks = () => {
       </div>
 
       {books?.map((book, i) => (
-        <Link href={`/all-books/${book.slug}`}>
+        <Link href={`/all-books/${book.slug}`} key={i}>
           <BookCard book={book} key={i} />
         </Link>
       ))}
