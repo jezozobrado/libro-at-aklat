@@ -1,8 +1,9 @@
-// import type { Metadata } from "next";
 import { Inter, Bree_Serif, Young_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import QueryClientProvider from "./QueryClientProvider";
+
+// import AuthProvider from "./auth/Provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -30,8 +31,10 @@ export default function RootLayout({
     <html lang="en">
       <QueryClientProvider>
         <body className={`${inter.variable} ${youngSerif.variable} font-inter`}>
+          {/* <AuthProvider> */}
           <Navbar />
           {children}
+          {/* </AuthProvider> */}
         </body>
       </QueryClientProvider>
     </html>
