@@ -52,10 +52,13 @@ const handler = NextAuth({
 
       return token;
     },
-    session: async ({ session, token: { uid } }) => {
+    session: async ({ session, token }) => {
+      const { uid } = token;
+      console.log("x", token);
       session.user = {
         email: (uid as any).email,
         name: (uid as any).username,
+        image: (uid as any).id,
       };
 
       return session;

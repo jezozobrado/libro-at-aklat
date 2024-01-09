@@ -1,18 +1,28 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { ShoppingBag } from "lucide-react";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import useCartStore from "../store/CartStore";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Box = () => {
   const { data: session } = useSession();
+  const cart = useCartStore((store) => store.cart);
+
+  const { data: box } = useQuery<any>({
+    queryKey: ["addToCart"],
+    queryFn: () =>
+      axios.get(`/api/cart/${session?.user?.image}`).then((res) => res.data),
+  });
+
+  console.log("sasasa", box);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -22,7 +32,7 @@ const Box = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        fhajfhkajhfjkahkfjhakjfffffffffffffff
+        {cart.map((book) => book.title)}
         {/* <DropdownMenuItem>
           <Button asChild variant="link">
             <Link href="/account-details">Account details</Link>

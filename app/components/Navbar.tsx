@@ -7,8 +7,11 @@ import { youngSerif } from "../layout";
 import { useSession } from "next-auth/react";
 
 import AccountDropdown from "./AccountDropdown";
-import { ShoppingBag } from "lucide-react";
+
 import Box from "./Box";
+import { useQuery } from "@tanstack/react-query";
+import { Book } from "../models/book";
+import axios from "axios";
 
 const Navbar = () => {
   const { status, data: session } = useSession();

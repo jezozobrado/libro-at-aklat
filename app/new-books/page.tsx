@@ -6,6 +6,7 @@ import axios from "axios";
 import BookCard from "../components/BookCard";
 import { Book } from "../models/book";
 import Link from "next/link";
+import useCartStore from "../store/CartStore";
 
 const NewBooks = () => {
   const { data: books } = useQuery<Book[]>({

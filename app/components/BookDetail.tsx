@@ -28,7 +28,7 @@ const BookDetail = ({ book }: Props) => {
           <p className="text-2xl font-semibold text-center">{book.title}</p>
           <p className="text-center">{`by ${book.author}`}</p>
           <Tag badge={book.badge} className=" flex m-auto" />
-          <AddToCart className="flex m-auto w-52 mb-2" />
+          <AddToCart className="flex m-auto w-52 mb-2" book={book} />
         </div>
         <Divider />
         <BookDetailItem label="Quick Take" value={book.overview} />

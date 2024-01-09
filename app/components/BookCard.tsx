@@ -24,7 +24,7 @@ const BookCard = ({ book }: Props) => {
             <p className="text-xl font-semibold">{book.title}</p>
             <p>{book.overview}</p>
           </div>
-          <AddToCart />
+          <AddToCart book={book} />
         </div>
       </div>
     </div>

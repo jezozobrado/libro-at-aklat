@@ -46,6 +46,7 @@ model User {
   hashedPassword String?
   accounts       Account[]
   sessions       Session[]
+  cart           Book[]
 }
 
 model VerificationToken {
@@ -68,4 +69,15 @@ model Book {
   synopsis       String? @db.LongText
   badge          Int?
   contentWarning String?
+  // cartId         Int?
+  // cart           Cart?   @relation(fields: [cartId], references: [id])
+  // cart           Cart[]
+  user           User[]
 }
+
+// model Cart {
+//   id     Int    @id @default(autoincrement())
+//   userId String? @unique
+//   user   User?   @relation(fields: [userId], references: [id])
+//   books  Book[]
+// }
