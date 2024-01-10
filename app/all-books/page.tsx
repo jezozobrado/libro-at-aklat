@@ -1,10 +1,19 @@
-import NewBooksCarousel from "../components/allBooks/NewBooksCarousel";
-import CarouselByGenre from "../components/allBooks/CarouselByGenre";
-import { Badge, Genre } from "../enums/book";
-import CarouselByMonth from "../components/allBooks/CarouselByMonth";
-import CarouselByTag from "../components/allBooks/CarouselByTag";
+"use client";
+import ShelfByGenre from "../components/ShelfByGenre";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Filter } from "lucide-react";
+import { useState } from "react";
+import ShelfByDefault from "../components/ShelfByDefault";
+import ShelfByMonth from "../components/ShelfByMonth";
+import ShelfByTag from "../components/ShelfByTag";
 
 const AllBooks = () => {
+  const [filter, setFilter] = useState<string>("");
   return (
     <div>
       <div className="flex  gap-8 flex-col">
@@ -15,25 +24,35 @@ const AllBooks = () => {
           Choose from our past and present favorites.
         </p>
       </div>
-      <NewBooksCarousel />
-      <CarouselByGenre
-        genre={Genre.THRILLER}
-        queryKey="thriller"
-        title="Thrills and Chills"
-      />
-      <CarouselByGenre
-        genre={Genre.ROMANCE}
-        queryKey="contemporary"
-        title="Slice of life"
-      />
-      <CarouselByMonth month="1223" queryKey="dec23" title="December 2023" />
-      <CarouselByTag
-        badge={Badge.EARLY_RELEASE}
-        title="Early Releases"
-        queryKey="early"
-      />
+      <DropdownMenu>
+        <DropdownMenuTrigger className="ml-[250px] mt-7">
+          <div className="flex gap-2 items-center">
+            <Filter size={20} />
+            {` Filter by ${filter}`}
+          </div>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent>
+          <DropdownMenuItem onClick={() => setFilter("month")}>
+            Month
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setFilter("genre")}>
+            Genre
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setFilter("tag")}>
+            Tag
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setFilter("")}>
+            Default
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      {filter === "month" && <ShelfByMonth />}
+      {filter === "genre" && <ShelfByGenre />}
+      {filter === "tag" && <ShelfByTag />}
+      {filter === "" && <ShelfByDefault />}
     </div>
   );
 };
-
 export default AllBooks;

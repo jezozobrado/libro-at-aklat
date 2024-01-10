@@ -17,7 +17,7 @@ const NewBooksCarousel = () => {
   return (
     <>
       {isLoading ? (
-        <Loader2 className="m-auto mt-20" size={40} />
+        <Loader2 className="m-auto mt-20 animate-spin" size={40} />
       ) : (
         <BookCarousel books={books} title="January 2024" />
       )}

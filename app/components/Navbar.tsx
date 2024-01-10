@@ -17,7 +17,7 @@ const Navbar = () => {
   const path = usePathname();
 
   return (
-    <nav className="bg-slate-50 py-3 px-2 flex justify-center border-b-1 border-slate-300 h-12">
+    <nav className="bg-slate-50 py-3 px-2 flex justify-center border-b-1 border-slate-300 h-14">
       {status !== "loading" && (
         <div className="max-w-[1200px] flex w-full justify-between align-middle items-center">
           <Link
@@ -26,7 +26,7 @@ const Navbar = () => {
           >
             Libro at Aklat
           </Link>
-          <div className="flex gap-5">
+          <div className="flex gap-5 -ml-72">
             <Link
               href="/new-books"
               className={`${path === "/new-books" ? "font-bold" : ""}`}

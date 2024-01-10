@@ -64,7 +64,7 @@ const Box = () => {
           </Badge>
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent onPointerDownOutside={closeCart}>
         <X
           strokeWidth={2.5}
           size={28}
