@@ -1,4 +1,3 @@
-import HeroText from "./components/HeroText";
 import Hero from "./components/home/Hero";
 import HeroImage from "./components/home/HeroImage";
 import Steps from "./components/home/Steps";
@@ -9,8 +8,9 @@ export default function Home() {
       <Hero />
       <HeroImage />
       <HeroText
-        header="We're freak between sheets."
-        subtitle="Be part of this wholesome bookclub ;)"
+        header=" Books are our jam."
+        subtitle=" Choose from a curated selection of the best new hardcovers and
+        audiobooks every month."
       />
       <Steps />
     </>

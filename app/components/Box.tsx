@@ -5,7 +5,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
-import { Delete, DeleteIcon, X, ShoppingBag } from "lucide-react";
+import { X, ShoppingBag } from "lucide-react";
 import { useSession } from "next-auth/react";
 import useCartStore from "../store/CartStore";
 import { useQuery } from "@tanstack/react-query";
@@ -16,11 +16,16 @@ import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import useBoxStore from "../store/BoxStore";
 
 const Box = () => {
   const { data: session } = useSession();
   const setCart = useCartStore((store) => store.setCart);
   const cart = useCartStore((store) => store.cart);
+
+  const isCartOpen = useBoxStore((s) => s.open);
+  const closeCart = useBoxStore((s) => s.setClose);
+  const openCart = useBoxStore((s) => s.setOpen);
 
   const { data: currentCart, refetch } = useQuery<any>({
     queryKey: ["addToCart"],
@@ -41,11 +46,17 @@ const Box = () => {
     () => setCart((currentCart?.[0]?.cart || []) as Book[]),
     [currentCart]
   );
-
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isCartOpen}>
       <DropdownMenuTrigger>
-        <div className="flex gap-2 items-center">
+        <div
+          className="flex gap-2 items-center"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openCart();
+          }}
+        >
           <p>{`${session?.user?.name}'s box`}</p>
           <ShoppingBag size={20} />
           <Badge className="relative bottom-2 right-4 px-1 py-[0px] m-0">
@@ -54,6 +65,25 @@ const Box = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
+        <X
+          strokeWidth={2.5}
+          size={28}
+          className="ml-auto p-1 cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeCart();
+          }}
+        />
+        {!!cart.length && (
+          <p className="ml-2 mb-2 text-md font-semibold">{`You got great taste! ${
+            cart.length === 1
+              ? "One is not enough, pick more"
+              : cart.length === 2
+              ? "Third time's a charm"
+              : "Checkout now"
+          }`}</p>
+        )}
         {cart?.length ? (
           cart.map((book: Book) => (
             <div key={book.id} className="flex gap-5 m-0 p-2 items-center">
@@ -85,15 +115,17 @@ const Box = () => {
             </div>
           ))
         ) : (
-          <p className="p-2 pt-4">Looks empty here. Pick your books.</p>
+          <p className="p-2 pt-2 pb-10 text-md font-semibold">
+            Looks empty here. Pick your books.
+          </p>
         )}
         <div className="flex gap-2 ml-auto mr-1 mb-1 justify-end">
           {cart.length ? (
-            <Button variant="outline" asChild>
+            <Button variant="outline" asChild onClick={closeCart}>
               <Link href="/all-books">See other books</Link>
             </Button>
           ) : (
-            <Button asChild>
+            <Button asChild onClick={closeCart}>
               <Link href="/all-books">See books</Link>
             </Button>
           )}

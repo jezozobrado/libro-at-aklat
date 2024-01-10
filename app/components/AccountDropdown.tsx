@@ -21,14 +21,10 @@ const AccountDropdown = () => {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Button asChild variant="link">
-            <Link href="/account-details">Bookshelf</Link>
+            <Link href="/book-shelf">Bookshelf</Link>
           </Button>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Button asChild variant="link">
-            <Link href="/account-details">To be read</Link>
-          </Button>
-        </DropdownMenuItem>
+
         <DropdownMenuItem>
           <Button asChild variant="link">
             <Link href="/api/auth/signout">Sign out</Link>

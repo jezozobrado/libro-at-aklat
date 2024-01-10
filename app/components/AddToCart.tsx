@@ -8,6 +8,7 @@ import axios from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
+import useBoxStore from "../store/BoxStore";
 
 interface Props {
   className?: string;
@@ -18,6 +19,8 @@ const AddToCart = ({ className, book }: Props) => {
   const { data: session } = useSession();
   const setCart = useCartStore((s) => s.setCart);
   const cart = useCartStore((s) => s.cart);
+
+  const openCart = useBoxStore((s) => s.setOpen);
 
   const { data, refetch } = useQuery<any>({
     queryKey: ["addToCart"],
@@ -42,7 +45,11 @@ const AddToCart = ({ className, book }: Props) => {
     mutationFn: (newTodo) => {
       return axios.put("/api/cart", newTodo);
     },
-    onSuccess: refetch,
+    onSuccess: () => {
+      refetch();
+      openCart();
+      window.scrollTo(0, 0);
+    },
   });
 
   return (

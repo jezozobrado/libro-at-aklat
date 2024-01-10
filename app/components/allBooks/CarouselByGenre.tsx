@@ -12,13 +12,13 @@ interface Props {
 }
 
 const CarouselByGenre = ({ queryKey, genre, title }: Props) => {
-  const { data: books } = useQuery<Book[]>({
+  const { data: books, isLoading } = useQuery<Book[]>({
     queryKey: [queryKey],
     queryFn: () =>
       axios.get("/api/books", { params: { genre } }).then((res) => res.data),
   });
 
-  return <BookCarousel books={books} title={title} />;
+  return <>{!isLoading && <BookCarousel books={books} title={title} />}</>;
 };
 
 export default CarouselByGenre;

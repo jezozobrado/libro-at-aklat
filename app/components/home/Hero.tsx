@@ -1,23 +1,20 @@
 "use client";
 
-import { youngSerif } from "@/app/layout";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import HeroText from "../HeroText";
 
 const Hero = () => {
-  const { status, data: session } = useSession();
+  const { status } = useSession();
   return (
     <div className="flex justify-center mt-20 w-[750px] m-auto flex-col gap-4">
-      <div
-        className={`font-young text-[100px] font- text-center leading-tight tracking-wide`}
-      >
-        Books are our jam.
-      </div>
-      <p className="w-[500px] m-auto text-center">
-        Choose from a curated selection of the best new hardcovers and
-        audiobooks every month.
-      </p>
+      <HeroText
+        header=" Books are our jam."
+        subtitle=" Choose from a curated selection of the best new hardcovers and
+        audiobooks every month."
+      />
+
       {status === "unauthenticated" && (
         <div className="flex gap-3 justify-center">
           <Button>Join now</Button>
@@ -25,11 +22,11 @@ const Hero = () => {
         </div>
       )}
 
-      {status === "authenticated" && (
+      {status === "unauthenticated" && (
         <div className="flex gap-0 items-baseline justify-center">
           <p>Already a member?</p>
           <Button asChild variant="link">
-            <Link href="/login" className="text-base">
+            <Link href="/login" className="text-[16px]">
               Login.
             </Link>
           </Button>

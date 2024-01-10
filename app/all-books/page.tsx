@@ -1,6 +1,5 @@
 import NewBooksCarousel from "../components/allBooks/NewBooksCarousel";
 import CarouselByGenre from "../components/allBooks/CarouselByGenre";
-import ThrillerCarousel from "../components/allBooks/CarouselByGenre";
 import { Badge, Genre } from "../enums/book";
 import CarouselByMonth from "../components/allBooks/CarouselByMonth";
 import CarouselByTag from "../components/allBooks/CarouselByTag";

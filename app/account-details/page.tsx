@@ -1,7 +1,7 @@
 import UnderConstruction from "../components/UnderConstruction";
 
-const Gifts = () => {
+const page = () => {
   return <UnderConstruction />;
 };
 
-export default Gifts;
+export default page;

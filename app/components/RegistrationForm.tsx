@@ -27,7 +27,6 @@ const formSchema = z.object({
 });
 
 const RegistrationForm = () => {
-  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,7 +42,7 @@ const RegistrationForm = () => {
     const response = await signIn("credentials", {
       email: data.email,
       password: data.password,
-      callbackUrl: "/",
+      callbackUrl: "/new-books",
     });
 
     // const response = await signIn();

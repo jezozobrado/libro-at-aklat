@@ -3,12 +3,11 @@ import { Book } from "../models/book";
 import Image from "next/image";
 import Tag from "./Tag";
 import AddToCart from "./AddToCart";
-import { Separator } from "@/components/ui/separator";
 import BookDetailItem from "./detailPage/BookDetailItem";
 import Divider from "./detailPage/Divider";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowDownRight, ChevronRight, MoveRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 
 interface Props {
   book?: Book;
@@ -22,7 +21,7 @@ const BookDetail = ({ book }: Props) => {
       <div className="bg-slate-100 px-52 py-10 flex justify-center">
         <Image src={book.image} width={200} height={300} alt="book" />
       </div>
-      <div className="bg-slate-50  py-10 flex flex-col gap-[6px]">
+      <div className="bg-slate-50  py-9 flex flex-col gap-[6px]">
         <div className="flex flex-col gap-2">
           <p className="text-center">{GENRE_LABEL[book.genre].toUpperCase()}</p>
           <p className="text-2xl font-semibold text-center">{book.title}</p>

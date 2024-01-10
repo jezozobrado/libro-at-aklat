@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 const Steps = () => {
   return (
-    <div className="flex justify-center w-[1200px] m-auto flex-col gap-20">
+    <div className="flex justify-center w-[1200px] m-auto flex-col gap-20 mb-36 mt-20">
       <div className="flex gap-20 justify-between">
         <Image src={fiveBooks} alt="Five books" />
         <div className="flex flex-col gap-5 justify-center">
