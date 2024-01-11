@@ -16,7 +16,7 @@ interface Props {
 }
 
 const AddToCart = ({ className, book }: Props) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const setCart = useCartStore((s) => s.setCart);
   const cart = useCartStore((s) => s.cart);
 
@@ -40,6 +40,7 @@ const AddToCart = ({ className, book }: Props) => {
   useEffect(() => setCart((data?.[0]?.cart || []) as Book[]), [data]);
 
   const isPicked = cart.map((c) => c.id).includes(book.id);
+  const isCartFull = cart.length === 3;
 
   const mutation = useMutation({
     mutationFn: (newTodo) => {
@@ -53,24 +54,31 @@ const AddToCart = ({ className, book }: Props) => {
   });
 
   return (
-    <Button
-      disabled={isPicked || mutation.isPending}
-      className={`${className} text-md`}
-      onClick={(e) => {
-        e.preventDefault();
-        mutation.mutate({
-          id: session?.user?.image,
-          cart: [book.id],
-        } as unknown as void);
-        // axios
-        //   .put("/api/cart", { id: session?.user?.image, cart: [book.id] })
-        //   .then((res) => res.data)
-        //   .then(refetch);
-      }}
-    >
-      {mutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-      {isPicked ? "Already picked" : "Add to cart"}
-    </Button>
+    <>
+      {status === "authenticated" && (
+        <Button
+          disabled={isPicked || mutation.isPending || isCartFull}
+          className={`${className} text-md`}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            mutation.mutate({
+              id: session?.user?.image,
+              cart: [book.id],
+            } as unknown as void);
+          }}
+        >
+          {mutation.isPending && (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          )}
+          {isCartFull
+            ? "Your box is full. "
+            : isPicked
+            ? "Already picked"
+            : "Add to cart"}
+        </Button>
+      )}
+    </>
   );
 };
 

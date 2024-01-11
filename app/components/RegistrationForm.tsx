@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -44,10 +43,6 @@ const RegistrationForm = () => {
       password: data.password,
       callbackUrl: "/new-books",
     });
-
-    // const response = await signIn();
-    console.log(response);
-    // if (response?.status === 200) router.push("/new-books");
   }
 
   return (

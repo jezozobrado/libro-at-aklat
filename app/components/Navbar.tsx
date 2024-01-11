@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
 import { youngSerif } from "../layout";
 import { useSession } from "next-auth/react";
 
@@ -44,12 +43,6 @@ const Navbar = () => {
               className={`${path === "/how-it-works" ? "font-bold" : ""}`}
             >
               How it works
-            </Link>
-            <Link
-              href="/gifts"
-              className={`${path === "/gifts" ? "font-bold" : ""}`}
-            >
-              Gifts
             </Link>
           </div>
           {status === "unauthenticated" && (

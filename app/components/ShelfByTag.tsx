@@ -1,5 +1,3 @@
-import React from "react";
-import CarouselByMonth from "./allBooks/CarouselByMonth";
 import CarouselByTag from "./allBooks/CarouselByTag";
 import { Badge } from "../enums/book";
 

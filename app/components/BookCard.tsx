@@ -4,12 +4,16 @@ import { Book } from "../models/book";
 import { GENRE_LABEL } from "../constants/book";
 import Tag from "./Tag";
 import AddToCart from "./AddToCart";
+import { useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Props {
   book?: Book;
 }
 
 const BookCard = ({ book }: Props) => {
+  const { status } = useSession();
   if (!book) return;
   return (
     <div className="max-w-[1000px] flex justify-center flex-col gap-5 w-full m-auto mb-10">
@@ -24,7 +28,13 @@ const BookCard = ({ book }: Props) => {
             <p className="text-xl font-semibold">{book.title}</p>
             <p>{book.overview}</p>
           </div>
-          <AddToCart book={book} />
+          {status === "authenticated" ? (
+            <AddToCart book={book} />
+          ) : (
+            <Button asChild>
+              <Link href="/register">Sign up now</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>

@@ -76,11 +76,11 @@ const Box = () => {
           }}
         />
         {!!cart.length && (
-          <p className="ml-2 mb-2 text-md font-semibold">{`You got great taste! ${
+          <p className="ml-2 mb-2 text-md font-medium">{`You've got great taste! ${
             cart.length === 1
-              ? "One is not enough, pick more"
+              ? "Pick a second book."
               : cart.length === 2
-              ? "Third time's a charm"
+              ? "Third time's a charm. "
               : "Checkout now"
           }`}</p>
         )}
@@ -116,7 +116,7 @@ const Box = () => {
           ))
         ) : (
           <p className="p-2 pt-2 pb-10 text-md font-semibold">
-            Looks empty here. Pick your books.
+            Pick your books. You can pick up to three!
           </p>
         )}
         <div className="flex gap-2 ml-auto mr-1 mb-1 justify-end">
@@ -129,7 +129,11 @@ const Box = () => {
               <Link href="/all-books">See books</Link>
             </Button>
           )}
-          {!!cart?.length && <Button>Checkout</Button>}
+          {!!cart?.length && (
+            <Button asChild>
+              <Link href="/checkout">Checkout</Link>
+            </Button>
+          )}
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

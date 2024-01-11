@@ -7,12 +7,18 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { CircleUserRound } from "lucide-react";
 import Link from "next/link";
 
 const AccountDropdown = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>Account</DropdownMenuTrigger>
+      <DropdownMenuTrigger>
+        <div className="flex gap-2 items-center">
+          <CircleUserRound size={20} />
+          Account
+        </div>
+      </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
           <Button asChild variant="link">
