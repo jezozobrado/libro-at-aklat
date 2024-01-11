@@ -11,8 +11,8 @@ Click here [https://libro-at-aklat-test.vercel.app](https://libro-at-aklat-test.
 4. Add an `.env` file in the app directory and paste the following:
 
 ```
-DATABASE_URL='mysql://k8mj45akd93zylg0osn5:pscale_pw_MkY1z4ptZZV7GCTTUrtCwVxzjg7t3WuoQO6e56qphI0@gcp.connect.psdb.cloud/libro-at-aklat?sslaccept=strict'
-SHADOW_DATABASE_URL="mysql://root:hn3mTPRD@localhost:3306/libroataklat"
+DATABASE_URL=mysql://ncn95rdftanl7kolmlkn:pscale_pw_kNQ2NkqNaAYmoTjM7SlwIcKh6Gei6ZFuHHRQ9DdRZib@gcp.connect.psdb.cloud/libro-at-aklat?sslaccept=strict
+SHADOW_DATABASE_URL=mysql://root:hn3mTPRD@localhost:3306/libroataklat
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=d194X0MzPkM1lafjakjkaozioufgisogbg=
 ```
