@@ -1,4 +1,7 @@
-This is the repository of a book-centered ecommerce web app. This is deployed in Vercel at [https://libro-at-aklat-test.vercel.app](https://libro-at-aklat-test.vercel.app/)
+This is the repository of a book-centered ecommerce web app. 
+
+### To open the app in production:
+Click here [https://libro-at-aklat-test.vercel.app](https://libro-at-aklat-test.vercel.app/)
 
 ## To open the app in development:
 
@@ -8,8 +11,8 @@ This is the repository of a book-centered ecommerce web app. This is deployed in
 4. Add an `.env` file in the app directory and paste the following:
 
 ```
-DATABASE_URL=mysql://199qt5lg83zvuabbw162:pscale_pw_smFuNgUJ8soiC5KvLyWq4I1UPk5JPtMOsKoCbB1q6Vg@gcp.connect.psdb.cloud/libro-at-aklat?sslaccept=strict
-SHADOW_DATABASE_URL=mysql://root:hn3mTPRD@localhost:3306/libroataklat
+DATABASE_URL='mysql://k8mj45akd93zylg0osn5:pscale_pw_MkY1z4ptZZV7GCTTUrtCwVxzjg7t3WuoQO6e56qphI0@gcp.connect.psdb.cloud/libro-at-aklat?sslaccept=strict'
+SHADOW_DATABASE_URL="mysql://root:hn3mTPRD@localhost:3306/libroataklat"
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=d194X0MzPkM1lafjakjkaozioufgisogbg=
 ```
