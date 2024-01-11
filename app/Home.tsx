@@ -7,11 +7,6 @@ export default function Home() {
     <>
       <Hero />
       <HeroImage />
-      <HeroText
-        header=" Books are our jam."
-        subtitle=" Choose from a curated selection of the best new hardcovers and
-        audiobooks every month."
-      />
       <Steps />
     </>
   );

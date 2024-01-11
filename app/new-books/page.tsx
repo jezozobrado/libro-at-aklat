@@ -45,7 +45,7 @@ const NewBooks = () => {
         {!isLoading && (
           <div className="flex m-auto gap-2 flex-col mb-20 mt-12">
             <p className="font-young text-2xl flex justify-center">
-              Not into this month's books?
+              {`Not into this month's books?`}
             </p>
             <p className="flex justify-center">
               Check out our past selections.

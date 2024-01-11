@@ -32,7 +32,6 @@ const AddToCart = ({ className, book }: Props) => {
 
   useEffect(() => {
     if (session?.user?.image) {
-      console.log("huh", session?.user?.image);
       refetch();
     }
   }, [session?.user?.image]);
