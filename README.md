@@ -10,7 +10,8 @@ Follow the instructions on how to run the development server:
 4. Add an `.env` file in the app directory and paste the following:
 
 ```
-DATABASE_URL="mysql://root:hn3mTPRD@localhost:3306/libroataklat"
+DATABASE_URL='mysql://jwhfawos8dfor0bs0mii:pscale_pw_FGX2FjEiAHeviD58nfmhIsin1fuFLncUBTnQ5soIpgV@gcp.connect.psdb.cloud/libro-at-aklat?sslaccept=strict'
+SHADOW_DATABASE_URL="mysql://root:hn3mTPRD@localhost:3306/libroataklat"
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=d194X0MzPkM1lafjakjkaozioufgisogbg=
 ```
