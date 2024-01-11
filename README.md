@@ -1,8 +1,6 @@
 This is the repository of a book-centered ecommerce web app. This is deployed in Vercel at [https://libro-at-aklat-test.vercel.app](https://libro-at-aklat-test.vercel.app/)
 
-## Instructions
-
-Follow the instructions on how to run the development server:
+## To open the app in development:
 
 1. Clone this repository via `git clone`
 2. Move to the app directory via `cd libro-at-aklat`
