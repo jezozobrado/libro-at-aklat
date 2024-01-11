@@ -26,9 +26,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const body: Body = await request.json();
+  const body: Book = await request.json();
 
-  if (!body.title)
-    return NextResponse.json({ error: "Title is required" }, { status: 400 });
-  return NextResponse.json({ title: body.title, author: body.author });
+  if (!body.title || !body.author || !body.image)
+    return NextResponse.json({ error: "Info is missing" }, { status: 400 });
+
+  const book = await prisma.book.create({
+    data: body,
+  });
+
+  return NextResponse.json(book);
 }
