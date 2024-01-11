@@ -1,4 +1,4 @@
-This is the repository of a book-centered ecommerce web app. This uses NextJS as the full-stack framework. 
+This is the repository of a book-centered ecommerce web app. This is deployed in Vercel at [https://libro-at-aklat-test.vercel.app](https://libro-at-aklat-test.vercel.app/)
 
 ## Instructions
 
