@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the repository of a book-centered ecommerce web app. This uses NextJS as the full-stack framework. 
 
 ## Instructions
 
